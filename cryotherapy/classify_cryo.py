@@ -1,9 +1,16 @@
+# Predict cryotherapy treatment failure or success usign KNN
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 TEST_SIZE = 0.1
+
+LABELS = {
+    0: "Treatment FAILURE",
+    1: "Treatment SUCCESS"
+}
+
 
 def load_dataset(filename):
     # use pandas to excel and convert to numpy array
@@ -17,6 +24,7 @@ def load_dataset(filename):
     dataset = np.delete(data, -1, axis=1)
 
     return dataset, labels
+
 
 def get_ideal_k_value(K_accuracy):
     highest_accuracy = 0
@@ -67,8 +75,10 @@ def classify_sample(sample, dataset, labels, k):
 
     return sorted_class_count[0][0]
 
+
 if __name__ == "__main__":
     dataset, labels = load_dataset("cryotherapy_dataset.xlsx")
+    print ("\n ------ CRYOTHERAPY -------")
     print ("\nFiltered Dataset (first row):-\n", dataset[0])
     print ("Labels (first 10):-\n", labels[:10])
 
@@ -94,8 +104,8 @@ if __name__ == "__main__":
 
     print ("\nCustom Input Test:-\n")
 
-    # sample = np.array([1,1,1,1,2,1,2,1,1])
-    # print ("Input Sample: ", sample)
-    # sample_label = classify_sample(sample, dataset, labels, ideal_k)
-    # print ("Predicted Label: ", sample_label, " (", LABELS[sample_label], ")")
-    # print ("\n")
+    sample = np.array([2, 35, 8.50, 6, 3, 100])
+    print ("Input Sample: ", sample)
+    sample_label = classify_sample(sample, dataset, labels, ideal_k)
+    print ("Predicted Label: ", sample_label, " (", LABELS[sample_label], ")")
+    print ("\n")
