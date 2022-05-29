@@ -77,8 +77,8 @@ def classify_sample(sample, dataset, labels, k):
 
 
 if __name__ == "__main__":
+    print ("\n ------ BREAST CANCER -------")
     dataset, labels = load_dataset("cryotherapy_dataset.xlsx")
-    print ("\n ------ CRYOTHERAPY -------")
     print ("\nFiltered Dataset (first row):-\n", dataset[0])
     print ("Labels (first 10):-\n", labels[:10])
 
