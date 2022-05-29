@@ -31,7 +31,7 @@ def get_ideal_k_value(K_accuracy):
         if (K_accuracy[i] == highest_accuracy):
             ideal_k.append(i)
         
-    return ideal_k[0]
+    return ideal_k[0] + 1
 
 
 def predict_accuracy(predicted_labels, labels):
@@ -86,6 +86,8 @@ if __name__ == "__main__":
             predicted_labels.append(predicted_sample)
         K_accuracy.append(predict_accuracy(predicted_labels, test_labels))
     ideal_k = get_ideal_k_value(K_accuracy)
+
+    print ("\nAccuracy for K (1 to 20):-\n", K_accuracy)
 
     print ("\nIdeal K value = ", ideal_k)
     print ("Accuracy: ", K_accuracy[ideal_k]*100, "%")

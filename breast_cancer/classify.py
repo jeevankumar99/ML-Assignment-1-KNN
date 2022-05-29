@@ -96,6 +96,8 @@ if __name__ == "__main__":
         K_accuracy.append(predict_accuracy(predicted_labels, test_labels))
     ideal_k = get_ideal_k_value(K_accuracy)
 
+    print ("\nAccuracy for K (1 to 20):-\n", K_accuracy)
+
     print ("\nIdeal K value = ", ideal_k)
     print ("Accuracy: ", K_accuracy[ideal_k]*100, "%")
 
