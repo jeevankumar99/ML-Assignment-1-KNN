@@ -1,0 +1,11 @@
+Iris data set has the following feature captured for a flower species
+SepalLengthCm 	
+SepalWidthCm 	
+PetalLengthCm 	
+PetalWidthCm 	
+Species
+
+Perform the following on the data set
+1. Plot the dataset and see how the data points are grouped
+2. Train the system and identify the species for a given new data set
+3. Calculate the accuarcy of the system and display

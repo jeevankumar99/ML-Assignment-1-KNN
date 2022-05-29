@@ -1,0 +1,21 @@
+Abstract:  Cryotherapy is a pain treatment that uses a method of localized freezing temperatures to deaden an irritated nerve. Cryotherapy is also used as a method of treating localized areas of some cancers (called cryosurgery), such as prostate cancer and to treat abnormal skin cells by dermatologists.This dataset contains information about wart treatment results of 90 patients using cryotherapy.
+
+The data set has 90 samples with 6 features namely
+sex	
+age	
+Time	
+Number_of_Warts	
+Type	
+Area
+the last column has result of traetment where
+0 --indicates failure
+1 -- indicates success
+
+uee 10 percent of data set samples for testing and the others for training
+Illustarte and analyze the following wrt to the data set
+
+1. Load the data set to matrix
+2. calculate the percentage of error in predicting test samples using data set
+3. Analyze the best value that can be used for K
+4. give a test sample of your own and see whether you can predict whether the treatement of the patient will be succesful or not
+	
