@@ -1,29 +1,22 @@
-# Predict Benign or Malignant Breast cancer using KNN
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
-LABELS = {
-    2: "Benign",
-    4: "Malignant"
-}
-
-TEST_SIZE = 0.2
-# K varies from 1 to 20
-
+TEST_SIZE = 0.1
 
 def load_dataset(filename):
-    # each value is split by a comma, so we use that as delimiter.
-    data = np.genfromtxt(filename, delimiter=",", dtype=int)
+    # use pandas to excel and convert to numpy array
+    data = pd.read_excel("cryotherapy_dataset.xlsx")
+    data = np.array(data)
     print ("\nDataset shape: ", data.shape)
     print ("First row from the dataset:-\n", data[0])
     
     # get the last column as labels, remove 1st and last column from data.
-    labels = [x[-1] for x in data]
-    dataset = np.delete(data, [0, -1], axis=1)
+    labels = [int(x[-1]) for x in data]
+    dataset = np.delete(data, -1, axis=1)
 
     return dataset, labels
-
 
 def get_ideal_k_value(K_accuracy):
     highest_accuracy = 0
@@ -38,7 +31,7 @@ def get_ideal_k_value(K_accuracy):
         if (K_accuracy[i] == highest_accuracy):
             ideal_k.append(i)
         
-    return ideal_k[0] + 1
+    return ideal_k[0]
 
 
 def predict_accuracy(predicted_labels, labels):
@@ -74,13 +67,11 @@ def classify_sample(sample, dataset, labels, k):
 
     return sorted_class_count[0][0]
 
-
-
 if __name__ == "__main__":
-    dataset, labels = load_dataset("dataset")
+    dataset, labels = load_dataset("cryotherapy_dataset.xlsx")
     print ("\nFiltered Dataset (first row):-\n", dataset[0])
     print ("Labels (first 10):-\n", labels[:10])
-    
+
     #split dataset
     train_size = int((1-TEST_SIZE) * dataset.shape[0])
     train_data, train_labels = dataset[:train_size], labels[:train_size]
@@ -101,16 +92,8 @@ if __name__ == "__main__":
 
     print ("\nCustom Input Test:-\n")
 
-    sample = np.array([1,1,1,1,2,1,2,1,1])
-    print ("Input Sample: ", sample)
-    sample_label = classify_sample(sample, dataset, labels, ideal_k)
-    print ("Predicted Label: ", sample_label, " (", LABELS[sample_label], ")")
-    print ("\n")
-
-
-    
-
-
-
-
-
+    # sample = np.array([1,1,1,1,2,1,2,1,1])
+    # print ("Input Sample: ", sample)
+    # sample_label = classify_sample(sample, dataset, labels, ideal_k)
+    # print ("Predicted Label: ", sample_label, " (", LABELS[sample_label], ")")
+    # print ("\n")
