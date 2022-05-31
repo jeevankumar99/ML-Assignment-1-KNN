@@ -100,7 +100,7 @@ if __name__ == "__main__":
         for sample in test_data:
             predicted_sample = classify_sample(sample, train_data, train_labels, K)
             predicted_labels.append(predicted_sample)
-        K_accuracy.append(predict_accuracy(predicted_labels, test_labels))
+        K_accuracy.append(round(predict_accuracy(predicted_labels, test_labels), 2))
     ideal_k = get_ideal_k_value(K_accuracy)
 
     print ("\nAccuracy for K (1 to 20):-\n", K_accuracy)
