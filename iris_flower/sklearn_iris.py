@@ -1,12 +1,12 @@
 
 import numpy as np
-from classify_cryo import *
+from classify_iris import *
 from sklearn.neighbors import KNeighborsClassifier
 
 
 if __name__ == "__main__":
-    print ("\n ------ CRYOTHERAPY using SKLearn-------")
-    dataset, labels = load_dataset("cryotherapy_dataset.xlsx")
+    print ("\n ------IRIS using SKLearn -------")
+    dataset, labels = load_dataset("iris.csv")
     print ("\nFiltered Dataset (first row):-\n", dataset[0])
     print ("Labels (first 10):-\n", labels[:10])
 
@@ -29,8 +29,8 @@ if __name__ == "__main__":
     print ("\nK is taken as 1, ideal value from previous program")
     print ("Accuracy: ", accuracy)
 
-    sample = np.array([2, 16, 8.5, 1, 2, 60])
+    sample = np.array([6.5, 2.8, 4.6, 1.5])
     print ("\nInput Sample: ", sample)
     sample_label = knn_classifier.predict([sample])[0]
-    print ("Predicted Label: ", sample_label, " (", LABELS[sample_label], ")")
+    print ("Predicted Label: ", sample_label, " (", CLASSES[sample_label], ")")
     print ("\n")
