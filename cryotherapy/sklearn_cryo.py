@@ -17,7 +17,8 @@ if __name__ == "__main__":
     print ("\nTrain shape: ", train_data.shape, "\nTest shape: ", test_data.shape)
     
     
-    knn_classifier = KNeighborsClassifier(n_neighbors=7)
+    # 
+    knn_classifier = KNeighborsClassifier(n_neighbors=1)
     knn_classifier.fit(train_data, train_labels)
     predicted_labels = []
     for sample in test_data:
@@ -25,7 +26,7 @@ if __name__ == "__main__":
             knn_classifier.predict([sample])[0]
         )
     accuracy = predict_accuracy(predicted_labels, test_labels)
-    print ("\nK is taken as 7, ideal value from previous program")
+    print ("\nK is taken as 1, ideal value from previous program")
     print ("Accuracy: ", accuracy)
 
     sample = np.array([2, 16, 8.5, 1, 2, 60])
